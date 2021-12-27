@@ -27,8 +27,9 @@ class ImageTextIndexer(object):
             return image_features.cpu().numpy()
     
     def index_text(self, query_text):
+        text = clip.tokenize([query_text]).to(self.device)
         with torch.no_grad():
-            text_features = self.model.encode_text(query_text)            
+            text_features = self.model.encode_text(text)            
             return text_features.cpu().numpy()
 
 indexer = ImageTextIndexer()
