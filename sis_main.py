@@ -15,12 +15,12 @@ from matcher import semantic_search
 def parse_program_args():
     parser = ArgumentParser(description='CLI tool for managing images')
     parser.add_argument('--action', type=str, help='Action to be performed - [search, index]. default - search', default='search')
-    parser.add_argument('--gallery_dir', type=str, help='Root folder of images', default='')
+    parser.add_argument('--gallery_dir', type=str, help='Root folder of images', default='./gallery')
     parser.add_argument('--query', type=str, help='Query text', default='')
     # parser.add_argument('--batch_size', type=int, help='Batch size for search, default - 128', default=128)
     parser.add_argument('--num_results', type=int, help='Max. number of search results, default - 10', default=10)    
-    parser.add_argument('--work_dir', type=str, help='Folder to keep generated files. defaul - ./.sis_filest', default='./.sis_files')
-    parser.add_argument('--out_dir', type=str, help='Folder to keep search results. default - ./sis_results', default='./sis_results')
+    parser.add_argument('--work_dir', type=str, help='Folder to keep generated files. defaul - ./.semantis_files', default='./.semantis_files')
+    parser.add_argument('--out_dir', type=str, help='Folder to keep search results. default - ./semantis_results', default='./semantis_results')
     return parser.parse_args()
 
 
