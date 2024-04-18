@@ -109,6 +109,7 @@ def api_search(
 
     search_folder = os.path.join(root_folder, db_name, search_path)
     if not os.path.exists(search_folder):
+        logger.warning("folder not found! - %s" % search_folder)
         return {'message': 'success', 'results': []}
 
     imgpth_score = dict()
@@ -129,4 +130,9 @@ def api_search(
     ranked_imgpths = list(ranked_imgpths_it[:min(
         topK, len(imgpth_score))]) if topK is not None else list(ranked_imgpths_it)
 
-    return {'message': 'success', 'results': ranked_imgpths}
+    return {
+        'message': 'success',
+        'results': [x[len(os.path.join(root_folder, db_name)) + 1:-4] for
+                    x in ranked_imgpths]
+        # -4, for '.npy'
+    }
