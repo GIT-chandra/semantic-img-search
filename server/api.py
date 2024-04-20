@@ -9,7 +9,8 @@ import logging
 from typing_extensions import Annotated
 from fastapi import FastAPI, Body, UploadFile, File
 
-from matcher import cossim
+def cossim(a,b):
+    return np.dot(a,b)/(np.linalg.norm(a) * np.linalg.norm(b))
 # from pydantic import BaseModel, Field
 
 logger = logging.getLogger("uvicorn")
